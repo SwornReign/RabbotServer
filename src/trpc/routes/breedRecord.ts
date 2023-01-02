@@ -5,7 +5,7 @@ import { prisma } from '../..';
 
 const model: Models = 'breedRecord'
 
-export const breedTypeRouter = router({
+export const breedRecordRouter = router({
     create: publicProcedure
         .input(_BreedRecordModel.omit({ id: true }))
         .mutation(({ input }) => {

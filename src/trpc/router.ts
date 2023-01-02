@@ -1,7 +1,7 @@
 import { initTRPC } from '@trpc/server';
 import * as z from 'zod';
 import { prisma } from '..';
-import { cageRouter } from './routes';
+import { breedRecordRouter, breedTypeRouter, cageRouter, rabbitRouter } from './routes';
 export const t = initTRPC.create();
 export const appRouter = t.router({
     getUser: t.procedure.input(z.string()).query((req) => {
@@ -15,7 +15,10 @@ export const appRouter = t.router({
 
             return 'nothing'
         }),
-    cage: cageRouter
+    cage: cageRouter,
+    rabbit: rabbitRouter,
+    breedType: breedTypeRouter,
+    breedRecord: breedRecordRouter
 });
 // export type definition of API
 export type AppRouter = typeof appRouter;
