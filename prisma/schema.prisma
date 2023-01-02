@@ -1,0 +1,120 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum CageType {
+  Breeder
+  Pen
+}
+
+model Cage {
+  id   String @id @default(uuid()) @map("_id") @db.Uuid
+  name String @unique
+
+  cageType CageType
+
+  waterInterval Int @default(2000)
+  foodInterval  Int @default(2000)
+
+  feedTime  String[]
+  feedCount Int
+
+  waterGpio  Int[]
+  foodGpio   Int[]
+  weightGpio Int[]
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  Rabbit    Rabbit[] @relation("Dam")
+
+  Kitten Rabbit[] @relation("Kitten")
+}
+
+enum RabbitGender {
+  Sire
+  Dam
+}
+
+model BreedType {
+  id   String @id @default(uuid()) @map("_id")
+  name String
+
+  Rabbit Rabbit[]
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
+
+enum RabbitStatus {
+  de
+}
+
+model Rabbit {
+  id     String       @id @default(uuid()) @map("_id")
+  name   String
+  weight String
+  gender RabbitGender
+
+  BreedType   BreedType @relation(fields: [breedTypeId], references: [id])
+  breedTypeId String
+
+  birthDate   DateTime  @default(now())
+  deceaseDate DateTime?
+
+  lastBreedDate DateTime?
+
+  breedGeo Json
+
+  cageId String @unique @db.Uuid
+  Cage   Cage   @relation(name: "Dam", fields: [cageId], references: [id])
+
+  motherId String? @unique @db.Uuid
+  Mother   Rabbit? @relation(name: "Mother", fields: [motherId], references: [id])
+
+  fatherId String? @unique @db.Uuid
+  Father   Rabbit? @relation(name: "Father", fields: [fatherId], references: [id])
+
+  RabbitMother Rabbit? @relation("Mother")
+  RabbitFather Rabbit? @relation("Father")
+
+  SireBreedRecord BreedRecord[] @relation(name: "SireBreedRecord")
+  DamBreedRecord  BreedRecord[] @relation(name: "DamBreedRecord")
+  kittenCageId    String
+  CageKiiten      Cage          @relation(name: "Kitten", fields: [kittenCageId], references: [id])
+
+  status     String
+  statusDate DateTime?
+}
+
+model BreedRecord {
+  id        String   @id @default(uuid()) @map("_id")
+  breedDate DateTime
+
+  sireId String
+  Sire   Rabbit @relation(name: "SireBreedRecord", fields: [sireId], references: [id])
+
+  damId String
+  Dam   Rabbit @relation(name: "DamBreedRecord", fields: [damId], references: [id])
+
+  damWeight String
+
+  testDate           DateTime?
+  expectedKindleDate DateTime?
+  nestBoxDate        DateTime?
+  kindleDate         DateTime?
+  noKits             Boolean?
+  weanDate           DateTime?
+  noWean             Boolean?
+  weightMF           String?
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
