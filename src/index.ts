@@ -6,15 +6,39 @@ import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify';
 import { appRouter } from './trpc/router';
 import fastifyStatic from '@fastify/static';
 import { fileURLToPath } from 'url';
-
+import { fastifyCors } from '@fastify/cors';
+import fastifyPrismaClient from 'fastify-prisma-client';
+import { createContext } from './trpc/context';
+import { PrismaClient } from '@prisma/client';
 
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
 
+export const prisma = new PrismaClient()
+
 const server = fastify({
   maxParamLength: 5000,
 });
+
+server.register(fastifyPrismaClient, {});
+
+server.register(fastifyCors, () => {
+  return (req: any, callback: any) => {
+    const corsOptions = {
+      // This is NOT recommended for production as it enables reflection exploits
+      origin: true
+    };
+
+    // do not include CORS headers for requests from localhost
+    if (/^localhost$/m.test(req.headers.origin)) {
+      corsOptions.origin = false
+    }
+
+    // callback expects two parameters: error and options
+    callback(null, corsOptions)
+  }
+})
 
 
 //use GPIO pin numbers
@@ -42,6 +66,8 @@ Seq[8] = [0, 0, 0, 0];
 // for (var i = 0; i < pinNumber; i++) {
 //   pins[i] = new gpio(stepPins[i], "out");
 // }
+
+
 
 var step = async function (stepCounter: number) {
   return new Promise((res) => {
@@ -88,7 +114,7 @@ server.get("/", async (request, reply) => {
 
 server.register(fastifyTRPCPlugin, {
   prefix: '/trpc',
-  trpcOptions: { router: appRouter },
+  trpcOptions: { router: appRouter, createContext },
 });
 
 server.post("/Food", async (request, reply) => {
@@ -106,7 +132,7 @@ server.post("/Water", async (request, reply) => {
 // Run the server!
 const start = async () => {
   try {
-    await server.listen({ port: 80, host: "0.0.0.0" });
+    await server.listen({ port: 5000, host: "0.0.0.0" });
   } catch (err) {
     server.log.error(err);
     process.exit(1);
