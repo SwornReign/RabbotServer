@@ -122,6 +122,16 @@ server.post("/Food", async (request, reply) => {
   return { Food: true };
 });
 
+
+server.get("/breed", async (request, reply) => {
+  const breed = await prisma.breedType.create({
+                data: {
+                    name: 'Flemish Giant',
+                }
+            })
+  return breed;
+});
+
 server.post("/Water", async (request, reply) => {
   const { interval } = request.body as { interval: number };
   await runWater(interval);

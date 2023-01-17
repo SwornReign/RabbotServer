@@ -22,10 +22,12 @@ enum CageType {
 }
 
 model Cage {
-    id   String @id @default(uuid()) @map("_id")
-    name String @unique
+    id          String  @id @default(uuid()) @map("_id")
+    name        String  @unique
+    description String?
 
     cageType CageType
+    AutoFeed Boolean?
 
     waterInterval Int @default(2000)
     foodInterval  Int @default(2000)
@@ -33,14 +35,14 @@ model Cage {
     feedTime  String[]
     feedCount Int
 
-    waterGpio  Int[]
+    waterGpio  Int
     foodGpio   Int[]
     weightGpio Int[]
 
     createdAt DateTime @default(now())
     updateAt  DateTime @updatedAt
-    Rabbit    Rabbit[] @relation("Dam")
 
+    Rabbit Rabbit[] @relation("Dam")
     Kitten Rabbit[] @relation("Kitten")
 }
 
@@ -69,6 +71,8 @@ model Rabbit {
     weight String
     gender RabbitGender
 
+    description String?
+
     BreedType   BreedType @relation(fields: [breedTypeId], references: [id])
     breedTypeId String
 
@@ -79,37 +83,38 @@ model Rabbit {
 
     breedGeo Json?
 
-    cageId String? @unique
     Cage   Cage?   @relation(name: "Dam", fields: [cageId], references: [id])
+    cageId String?
 
-    motherId String? @unique
-    Mother   Rabbit? @relation(name: "Mother", fields: [motherId], references: [id],  onDelete: NoAction, onUpdate: NoAction)
+    motherId String?
+    Mother   Rabbit? @relation(name: "Mother", fields: [motherId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-    fatherId String? @unique
-    Father   Rabbit? @relation(name: "Father", fields: [fatherId], references: [id],  onDelete: NoAction, onUpdate: NoAction) 
+    fatherId String?
+    Father   Rabbit? @relation(name: "Father", fields: [fatherId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-    RabbitMother Rabbit? @relation("Mother")
-    RabbitFather Rabbit? @relation("Father")
+    RabbitMother Rabbit[] @relation(name: "Mother")
+    RabbitFather Rabbit[] @relation(name: "Father")
 
     SireBreedRecord BreedRecord[] @relation(name: "SireBreedRecord")
     DamBreedRecord  BreedRecord[] @relation(name: "DamBreedRecord")
-    
-    kittenCageId    String?
-    CageKiiten      Cage?          @relation(name: "Kitten", fields: [kittenCageId], references: [id])
 
-    status     String?
+    kittenCageId String?
+    CageKiiten   Cage?   @relation(name: "Kitten", fields: [kittenCageId], references: [id])
+
+    status     String?   @default("Alive")
     statusDate DateTime?
 }
 
 model BreedRecord {
-    id        String   @id @default(uuid()) @map("_id")
-    breedDate DateTime
+    id          String   @id @default(uuid()) @map("_id")
+    breedDate   DateTime
+    description String?
 
-    sireId String
-    Sire   Rabbit @relation(name: "SireBreedRecord", fields: [sireId], references: [id])
+    sireId String?
+    Sire   Rabbit? @relation(name: "SireBreedRecord", fields: [sireId], references: [id])
 
-    damId String
-    Dam   Rabbit @relation(name: "DamBreedRecord", fields: [damId], references: [id])
+    damId String?
+    Dam   Rabbit? @relation(name: "DamBreedRecord", fields: [damId], references: [id])
 
     damWeight String
 

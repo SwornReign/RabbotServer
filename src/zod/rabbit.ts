@@ -13,17 +13,18 @@ export const _RabbitModel = z.object({
   name: z.string(),
   weight: z.string(),
   gender: z.nativeEnum(RabbitGender),
+  description: z.string().nullish(),
   breedTypeId: z.string(),
   birthDate: z.date(),
-  deceaseDate: z.date().optional(),
-  lastBreedDate: z.date().optional(),
-  breedGeo: jsonSchema.optional(),
-  cageId: z.string().optional(),
-  motherId: z.string().optional(),
-  fatherId: z.string().optional(),
-  kittenCageId: z.string().optional(),
-  status: z.string().optional(),
-  statusDate: z.date().optional(),
+  deceaseDate: z.date().nullish(),
+  lastBreedDate: z.date().nullish(),
+  breedGeo: jsonSchema,
+  cageId: z.string().nullish(),
+  motherId: z.string().nullish(),
+  fatherId: z.string().nullish(),
+  kittenCageId: z.string().nullish(),
+  status: z.string().nullish(),
+  statusDate: z.date().nullish(),
 })
 
 export interface CompleteRabbit extends z.infer<typeof _RabbitModel> {
@@ -31,8 +32,8 @@ export interface CompleteRabbit extends z.infer<typeof _RabbitModel> {
   Cage?: CompleteCage | null
   Mother?: CompleteRabbit | null
   Father?: CompleteRabbit | null
-  RabbitMother?: CompleteRabbit | null
-  RabbitFather?: CompleteRabbit | null
+  RabbitMother: CompleteRabbit[]
+  RabbitFather: CompleteRabbit[]
   SireBreedRecord: CompleteBreedRecord[]
   DamBreedRecord: CompleteBreedRecord[]
   CageKiiten?: CompleteCage | null
@@ -48,8 +49,8 @@ export const RabbitModel: z.ZodSchema<CompleteRabbit> = z.lazy(() => _RabbitMode
   Cage: CageModel.nullish(),
   Mother: RabbitModel.nullish(),
   Father: RabbitModel.nullish(),
-  RabbitMother: RabbitModel.nullish(),
-  RabbitFather: RabbitModel.nullish(),
+  RabbitMother: RabbitModel.array(),
+  RabbitFather: RabbitModel.array(),
   SireBreedRecord: BreedRecordModel.array(),
   DamBreedRecord: BreedRecordModel.array(),
   CageKiiten: CageModel.nullish(),

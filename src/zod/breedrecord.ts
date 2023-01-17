@@ -4,8 +4,9 @@ import { CompleteRabbit, RabbitModel } from "./index"
 export const _BreedRecordModel = z.object({
   id: z.string(),
   breedDate: z.date(),
-  sireId: z.string(),
-  damId: z.string(),
+  description: z.string().nullish(),
+  sireId: z.string().nullish(),
+  damId: z.string().nullish(),
   damWeight: z.string(),
   testDate: z.date().nullish(),
   expectedKindleDate: z.date().nullish(),
@@ -20,8 +21,8 @@ export const _BreedRecordModel = z.object({
 })
 
 export interface CompleteBreedRecord extends z.infer<typeof _BreedRecordModel> {
-  Sire: CompleteRabbit
-  Dam: CompleteRabbit
+  Sire?: CompleteRabbit | null
+  Dam?: CompleteRabbit | null
 }
 
 /**
@@ -30,6 +31,6 @@ export interface CompleteBreedRecord extends z.infer<typeof _BreedRecordModel> {
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
 export const BreedRecordModel: z.ZodSchema<CompleteBreedRecord> = z.lazy(() => _BreedRecordModel.extend({
-  Sire: RabbitModel,
-  Dam: RabbitModel,
+  Sire: RabbitModel.nullish(),
+  Dam: RabbitModel.nullish(),
 }))

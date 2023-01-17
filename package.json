@@ -16,27 +16,29 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "-": "^0.0.1",
     "@fastify/autoload": "^5.0.0",
     "@fastify/cors": "^8.2.0",
     "@fastify/sensible": "^5.0.0",
     "@fastify/static": "^6.5.1",
     "@prisma/client": "^4.8.0",
-    "@trpc/server": "^10.7.0",
+    "@trpc/server": "^10.9.0",
+    "dayjs": "^1.11.7",
     "fastify": "^4.0.0",
     "fastify-cli": "^5.6.0",
     "fastify-plugin": "^4.0.0",
     "fastify-prisma-client": "^5.0.0",
-    "g": "^2.0.1",
+    "node-cron": "^3.0.2",
     "onoff": "^6.0.3",
     "pm2": "^5.2.2",
     "prisma": "^4.8.0",
+    "superjson": "^1.12.2",
     "uuid": "^9.0.0",
     "yarn": "^1.22.19",
     "zod": "^3.20.2"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
+    "@types/node-cron": "^3.0.7",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "esbuild": "^0.14.54",
@@ -47,7 +49,6 @@
     "prettier": "^2.8.0",
     "tap": "^16.1.0",
     "tsx": "^3.12.1",
-    "typescript": "^4.9.4",
-    "zod-prisma": "^0.5.4"
+    "typescript": "^4.9.4"
   }
 }

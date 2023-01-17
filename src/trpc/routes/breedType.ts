@@ -14,12 +14,13 @@ export const breedTypeRouter = router({
             })
         }),
     list: publicProcedure.query(() => {
-        return prisma.cage.findMany({});
+        return prisma[model].findMany();
     }),
     delete: publicProcedure
         .input(z.object({
             id: z.string().uuid()
-        })).mutation(({ input }) => {
+        }))
+        .mutation(({ input }) => {
             return prisma[model].delete({
                 where: {
                     id: input.id
@@ -34,5 +35,13 @@ export const breedTypeRouter = router({
                 },
                 data: input
             });
+        }),
+    createFirst: publicProcedure
+        .mutation(({ input }) => {
+            return prisma[model].create({
+                data: {
+                    name: 'Palomino',
+                }
+            })
         }),
 });
