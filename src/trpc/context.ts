@@ -1,7 +1,7 @@
 
 import { inferAsyncReturnType } from '@trpc/server';
 import { CreateFastifyContextOptions } from '@trpc/server/adapters/fastify';
-import { prisma } from '..';
+import { prisma } from '../app';
 
 
 

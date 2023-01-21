@@ -1,15 +1,13 @@
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 07e9774 (Merge branch 'main' of https://github.com/SwornReign/RabbotServer)
   "compileOnSave": false,
   "compilerOptions": {
-<<<<<<< HEAD
     "target": "es2017",
     "lib": ["es2017", "esnext.asynciterable", "esnext"],
-=======
-    "target": "es2022",
-    "lib": ["es2022", "esnext.asynciterable", "esnext"],
->>>>>>> e0abaca9e7145c6ed4bc11f4e0ffb49245fb4e5a
     "typeRoots": ["node_modules/@types"],
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
@@ -27,6 +25,7 @@
     "resolveJsonModule": true,
     "importHelpers": true,
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 =======
@@ -55,3 +54,6 @@
 =======
   }
 >>>>>>> parent of 3fd1810 (Weight System)
+=======
+}
+>>>>>>> parent of 07e9774 (Merge branch 'main' of https://github.com/SwornReign/RabbotServer)

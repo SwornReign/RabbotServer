@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/trpc/routes/index.ts"],"sourcesContent":["export * from \"./cage\";\r\nexport * from \"./rabbit\";\r\nexport * from \"./breedType\";\r\nexport * from \"./breedRecord\";\r\n\r\n"],"names":[],"mappings":"AAAA,cAAc,SAAS;AACvB,cAAc,WAAW;AACzB,cAAc,cAAc;AAC5B,cAAc,gBAAgB"}

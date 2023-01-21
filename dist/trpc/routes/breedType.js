@@ -1,11 +1,7 @@
 import { router, publicProcedure } from "..";
 import { z } from "zod";
 import { _BreedTypeModel } from "../../zod";
-<<<<<<< HEAD
 import { prisma } from "../../app";
-=======
-import { prisma } from "../..";
->>>>>>> e0abaca9e7145c6ed4bc11f4e0ffb49245fb4e5a
 var model = "breedType";
 export var breedTypeRouter = router({
     create: publicProcedure.input(_BreedTypeModel.omit({

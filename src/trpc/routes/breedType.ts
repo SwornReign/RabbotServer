@@ -1,7 +1,7 @@
 import { router, publicProcedure, Models } from '..';
 import { z } from 'zod';
 import { _BreedTypeModel } from '../../zod';
-import { prisma } from '../..';
+import { prisma } from '../../app';
 
 const model: Models = 'breedType'
 

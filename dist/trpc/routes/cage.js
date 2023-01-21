@@ -125,11 +125,7 @@ var __generator = this && this.__generator || function(thisArg, body) {
 import { router, publicProcedure } from "../../trpc";
 import { z } from "zod";
 import { _CageModel } from "../../zod";
-<<<<<<< HEAD
 import { prisma } from "../../app";
-=======
-import { prisma } from "../..";
->>>>>>> e0abaca9e7145c6ed4bc11f4e0ffb49245fb4e5a
 import cron from "node-cron";
 import { runMotor } from "../../GPIO/funtions";
 import dayjs from "dayjs";

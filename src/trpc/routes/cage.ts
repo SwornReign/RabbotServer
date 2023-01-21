@@ -1,7 +1,7 @@
 import { router, publicProcedure, Models } from '../../trpc';
 import { z } from 'zod';
 import { _CageModel } from '../../zod';
-import { prisma } from '../..';
+import { prisma } from '../../app';
 import cron from 'node-cron';
 import { runMotor } from '../../GPIO/funtions';
 import dayjs from 'dayjs';

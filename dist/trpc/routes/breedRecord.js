@@ -1,11 +1,7 @@
 import { router, publicProcedure } from "..";
 import { z } from "zod";
 import { _BreedRecordModel } from "../../zod";
-<<<<<<< HEAD
 import { prisma } from "../../app";
-=======
-import { prisma } from "../..";
->>>>>>> e0abaca9e7145c6ed4bc11f4e0ffb49245fb4e5a
 import dayjs from "dayjs";
 var model = "breedRecord";
 export var breedRecordRouter = router({
