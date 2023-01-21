@@ -1,15 +1,15 @@
-import * as z from "zod"
-import { CompleteRabbit, RabbitModel } from "./index"
+import * as z from 'zod';
+import { CompleteRabbit } from './index';
 
 export const _BreedTypeModel = z.object({
   id: z.string(),
   name: z.string(),
   createdAt: z.date(),
   updateAt: z.date(),
-})
+});
 
 export interface CompleteBreedType extends z.infer<typeof _BreedTypeModel> {
-  Rabbit: CompleteRabbit[]
+  Rabbit: CompleteRabbit[];
 }
 
 /**
@@ -17,6 +17,8 @@ export interface CompleteBreedType extends z.infer<typeof _BreedTypeModel> {
  *
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
-export const BreedTypeModel: z.ZodSchema<CompleteBreedType> = z.lazy(() => _BreedTypeModel.extend({
-  Rabbit: RabbitModel.array(),
-}))
+// export const BreedTypeModel: z.ZodSchema<CompleteBreedType> = z.lazy(() =>
+//   _BreedTypeModel.extend({
+//     Rabbit: RabbitModel.array(),
+//   }),
+// );

@@ -1,10 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CageModel = exports._CageModel = void 0;
+exports._CageModel = void 0;
 const tslib_1 = require("tslib");
 const z = tslib_1.__importStar(require("zod"));
 const client_1 = require("@prisma/client");
-const index_1 = require("./index");
 exports._CageModel = z.object({
     id: z.string(),
     name: z.string(),
@@ -21,13 +20,15 @@ exports._CageModel = z.object({
     createdAt: z.date(),
     updateAt: z.date(),
 });
-/**
- * CageModel contains all relations on your model in addition to the scalars
- *
- * NOTE: Lazy required in case of potential circular dependencies within schema
- */
-exports.CageModel = z.lazy(() => exports._CageModel.extend({
-    Rabbit: index_1.RabbitModel.array(),
-    Kitten: index_1.RabbitModel.array(),
-}));
+// /**
+//  * CageModel contains all relations on your model in addition to the scalars
+//  *
+//  * NOTE: Lazy required in case of potential circular dependencies within schema
+//  */
+// export const CageModel: z.ZodSchema<CompleteCage> = z.lazy(() =>
+//   _CageModel.extend({
+//     Rabbit: RabbitModel.array(),
+//     Kitten: RabbitModel.array(),
+//   }),
+// );
 //# sourceMappingURL=cage.js.map

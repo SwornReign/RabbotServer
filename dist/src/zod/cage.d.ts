@@ -1,5 +1,5 @@
-import * as z from "zod";
-import { CompleteRabbit } from "./index";
+import * as z from 'zod';
+import { CompleteRabbit } from './index';
 export declare const _CageModel: z.ZodObject<{
     id: z.ZodString;
     name: z.ZodString;
@@ -19,8 +19,8 @@ export declare const _CageModel: z.ZodObject<{
     createdAt: z.ZodDate;
     updateAt: z.ZodDate;
 }, "strip", z.ZodTypeAny, {
-    name?: string;
     id?: string;
+    name?: string;
     description?: string;
     cageType?: "Breeder" | "Pen";
     AutoFeed?: boolean;
@@ -34,8 +34,8 @@ export declare const _CageModel: z.ZodObject<{
     createdAt?: Date;
     updateAt?: Date;
 }, {
-    name?: string;
     id?: string;
+    name?: string;
     description?: string;
     cageType?: "Breeder" | "Pen";
     AutoFeed?: boolean;
@@ -53,9 +53,3 @@ export interface CompleteCage extends z.infer<typeof _CageModel> {
     Rabbit: CompleteRabbit[];
     Kitten: CompleteRabbit[];
 }
-/**
- * CageModel contains all relations on your model in addition to the scalars
- *
- * NOTE: Lazy required in case of potential circular dependencies within schema
- */
-export declare const CageModel: z.ZodSchema<CompleteCage>;

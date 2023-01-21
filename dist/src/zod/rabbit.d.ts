@@ -1,5 +1,5 @@
-import * as z from "zod";
-import { CompleteBreedType, CompleteCage, CompleteBreedRecord } from "./index";
+import * as z from 'zod';
+import { CompleteBreedType, CompleteCage, CompleteBreedRecord } from './index';
 type Literal = boolean | number | string;
 type Json = Literal | {
     [key: string]: Json;
@@ -25,8 +25,8 @@ export declare const _RabbitModel: z.ZodObject<{
     status: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     statusDate: z.ZodNullable<z.ZodOptional<z.ZodDate>>;
 }, "strip", z.ZodTypeAny, {
-    name?: string;
     id?: string;
+    name?: string;
     description?: string;
     status?: string;
     weight?: string;
@@ -42,8 +42,8 @@ export declare const _RabbitModel: z.ZodObject<{
     kittenCageId?: string;
     statusDate?: Date;
 }, {
-    name?: string;
     id?: string;
+    name?: string;
     description?: string;
     status?: string;
     weight?: string;
@@ -70,10 +70,9 @@ export interface CompleteRabbit extends z.infer<typeof _RabbitModel> {
     DamBreedRecord: CompleteBreedRecord[];
     CageKiiten?: CompleteCage | null;
 }
+export {};
 /**
  * RabbitModel contains all relations on your model in addition to the scalars
  *
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
-export declare const RabbitModel: z.ZodSchema<CompleteRabbit>;
-export {};

@@ -1,5 +1,4 @@
 import { Gpio as gpio } from 'onoff';
-
 import HX711 from '@ataberkylmz/hx711';
 
 //Weight

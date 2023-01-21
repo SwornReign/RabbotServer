@@ -1,10 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RabbitModel = exports._RabbitModel = void 0;
+exports._RabbitModel = void 0;
 const tslib_1 = require("tslib");
 const z = tslib_1.__importStar(require("zod"));
 const client_1 = require("@prisma/client");
-const index_1 = require("./index");
 const literalSchema = z.union([z.string(), z.number(), z.boolean()]);
 const jsonSchema = z.lazy(() => z.union([literalSchema, z.array(jsonSchema), z.record(jsonSchema)]));
 exports._RabbitModel = z.object({
@@ -30,15 +29,15 @@ exports._RabbitModel = z.object({
  *
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
-exports.RabbitModel = z.lazy(() => exports._RabbitModel.extend({
-    BreedType: index_1.BreedTypeModel,
-    Cage: index_1.CageModel.nullish(),
-    Mother: exports.RabbitModel.nullish(),
-    Father: exports.RabbitModel.nullish(),
-    RabbitMother: exports.RabbitModel.array(),
-    RabbitFather: exports.RabbitModel.array(),
-    SireBreedRecord: index_1.BreedRecordModel.array(),
-    DamBreedRecord: index_1.BreedRecordModel.array(),
-    CageKiiten: index_1.CageModel.nullish(),
-}));
+// export const RabbitModel: z.ZodSchema<CompleteRabbit> = z.lazy(() => _RabbitModel.extend({
+//   BreedType: BreedTypeModel,
+//   Cage: CageModel.nullish(),
+//   Mother: RabbitModel.nullish(),
+//   Father: RabbitModel.nullish(),
+//   RabbitMother: RabbitModel.array(),
+//   RabbitFather: RabbitModel.array(),
+//   SireBreedRecord: BreedRecordModel.array(),
+//   DamBreedRecord: BreedRecordModel.array(),
+//   CageKiiten: CageModel.nullish(),
+// }))
 //# sourceMappingURL=rabbit.js.map

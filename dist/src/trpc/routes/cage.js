@@ -16,36 +16,39 @@ exports.cageRouter = (0, trpc_1.router)({
         .input(zod_2._CageModel.omit({ id: true, updateAt: true, createdAt: true }))
         .mutation(({ input }) => {
         return app_1.prisma[model].create({
-            data: input
+            data: Object.assign({ name: input.name, cageType: input.cageType, feedCount: input.feedCount, waterGpio: input.waterGpio }, input),
         });
     }),
     list: trpc_1.publicProcedure.query(() => {
         return app_1.prisma[model].findMany({
             include: {
-                Rabbit: true
-            }
+                Rabbit: true,
+            },
         });
     }),
-    getOne: trpc_1.publicProcedure.input(zod_1.z.object({
-        id: zod_1.z.string().uuid()
-    })).query(({ input }) => {
+    getOne: trpc_1.publicProcedure
+        .input(zod_1.z.object({
+        id: zod_1.z.string().uuid(),
+    }))
+        .query(({ input }) => {
         return app_1.prisma[model].findFirst({
             where: {
-                id: input.id
+                id: input.id,
             },
             include: {
                 Rabbit: true,
-            }
+            },
         });
     }),
     delete: trpc_1.publicProcedure
         .input(zod_1.z.object({
-        id: zod_1.z.string().uuid()
-    })).mutation(({ input }) => {
+        id: zod_1.z.string().uuid(),
+    }))
+        .mutation(({ input }) => {
         return app_1.prisma[model].delete({
             where: {
-                id: input.id
-            }
+                id: input.id,
+            },
         });
     }),
     update: trpc_1.publicProcedure
@@ -53,16 +56,17 @@ exports.cageRouter = (0, trpc_1.router)({
         id: zod_1.z.string().uuid().optional(),
         name: zod_1.z.string().optional(),
         description: zod_1.z.string().optional(),
-        cageType: zod_1.z.enum(["Breeder", "Pen"]).optional(),
+        cageType: zod_1.z.enum(['Breeder', 'Pen']).optional(),
         AutoFeed: zod_1.z.boolean().optional(),
-    })).mutation(async ({ input }) => {
+    }))
+        .mutation(async ({ input }) => {
         let cageId = input.id;
         delete input.id;
         const data = await app_1.prisma[model].update({
             where: {
-                id: cageId
+                id: cageId,
             },
-            data: input
+            data: input,
         });
         const { feedTime } = data;
         if (input.AutoFeed && feedTime && feedTime.length) {
@@ -87,33 +91,34 @@ exports.cageRouter = (0, trpc_1.router)({
         .input(zod_1.z.object({
         rabbitId: zod_1.z.string().uuid(),
         cageId: zod_1.z.string().uuid(),
-    })).mutation(({ input }) => {
+    }))
+        .mutation(({ input }) => {
         return app_1.prisma[model].update({
             where: {
-                id: input.cageId
+                id: input.cageId,
             },
             data: {
                 Rabbit: {
                     connect: {
-                        id: input.rabbitId
-                    }
-                }
-            }
+                        id: input.rabbitId,
+                    },
+                },
+            },
         });
     }),
     listCage: trpc_1.publicProcedure
         .input(zod_1.z.object({
-        type: zod_1.z.enum(["Breeder", "Pen"])
+        type: zod_1.z.enum(['Breeder', 'Pen']),
     }))
         .query(({ input: { type } }) => {
         return app_1.prisma.$transaction(async (ctx) => {
             const cage = await ctx.cage.findMany({
                 where: {
-                    cageType: type
+                    cageType: type,
                 },
                 include: {
-                    Rabbit: true
-                }
+                    Rabbit: true,
+                },
             });
             const result = cage.filter((i) => Boolean(i.Rabbit.length));
             return result;

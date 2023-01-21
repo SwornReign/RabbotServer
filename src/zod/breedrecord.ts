@@ -1,5 +1,5 @@
-import * as z from "zod"
-import { CompleteRabbit, RabbitModel } from "./index"
+import * as z from 'zod';
+import { CompleteRabbit } from './index';
 
 export const _BreedRecordModel = z.object({
   id: z.string(),
@@ -18,11 +18,11 @@ export const _BreedRecordModel = z.object({
   weightMF: z.string().nullish(),
   createdAt: z.date(),
   updateAt: z.date(),
-})
+});
 
 export interface CompleteBreedRecord extends z.infer<typeof _BreedRecordModel> {
-  Sire?: CompleteRabbit | null
-  Dam?: CompleteRabbit | null
+  Sire?: CompleteRabbit | null;
+  Dam?: CompleteRabbit | null;
 }
 
 /**
@@ -30,7 +30,9 @@ export interface CompleteBreedRecord extends z.infer<typeof _BreedRecordModel> {
  *
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
-export const BreedRecordModel: z.ZodSchema<CompleteBreedRecord> = z.lazy(() => _BreedRecordModel.extend({
-  Sire: RabbitModel.nullish(),
-  Dam: RabbitModel.nullish(),
-}))
+// export const BreedRecordModel: z.ZodSchema<CompleteBreedRecord> = z.lazy(() =>
+//   _BreedRecordModel.extend({
+//     Sire: RabbitModel.nullish(),
+//     Dam: RabbitModel.nullish(),
+//   }),
+// );

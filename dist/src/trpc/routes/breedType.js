@@ -8,10 +8,12 @@ const app_1 = require("../../app");
 const model = 'breedType';
 exports.breedTypeRouter = (0, __1.router)({
     create: __1.publicProcedure
-        .input(zod_2._BreedTypeModel.omit({ id: true }))
+        .input(zod_2._BreedTypeModel.omit({ id: true, createdAt: true, updateAt: true }))
         .mutation(({ input }) => {
         return app_1.prisma[model].create({
-            data: input
+            data: {
+                name: input.name,
+            },
         });
     }),
     list: __1.publicProcedure.query(() => {
@@ -19,30 +21,28 @@ exports.breedTypeRouter = (0, __1.router)({
     }),
     delete: __1.publicProcedure
         .input(zod_1.z.object({
-        id: zod_1.z.string().uuid()
+        id: zod_1.z.string().uuid(),
     }))
         .mutation(({ input }) => {
         return app_1.prisma[model].delete({
             where: {
-                id: input.id
-            }
+                id: input.id,
+            },
         });
     }),
-    update: __1.publicProcedure
-        .input(zod_2._BreedTypeModel).mutation(({ input }) => {
+    update: __1.publicProcedure.input(zod_2._BreedTypeModel).mutation(({ input }) => {
         return app_1.prisma[model].update({
             where: {
-                id: input.id
+                id: input.id,
             },
-            data: input
+            data: input,
         });
     }),
-    createFirst: __1.publicProcedure
-        .mutation(({ input }) => {
+    createFirst: __1.publicProcedure.mutation(({ input }) => {
         return app_1.prisma[model].create({
             data: {
                 name: 'Palomino',
-            }
+            },
         });
     }),
 });

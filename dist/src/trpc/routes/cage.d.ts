@@ -106,15 +106,15 @@ export declare const cageRouter: import("@trpc/server").CreateRouterInner<import
         _meta: object;
         _ctx_out: object;
         _input_in: {
-            name?: string;
             id?: string;
+            name?: string;
             description?: string;
             cageType?: "Breeder" | "Pen";
             AutoFeed?: boolean;
         };
         _input_out: {
-            name?: string;
             id?: string;
+            name?: string;
             description?: string;
             cageType?: "Breeder" | "Pen";
             AutoFeed?: boolean;

@@ -168,15 +168,15 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _meta: object;
             _ctx_out: object;
             _input_in: {
-                name?: string;
                 id?: string;
+                name?: string;
                 description?: string;
                 cageType?: "Breeder" | "Pen";
                 AutoFeed?: boolean;
             };
             _input_out: {
-                name?: string;
                 id?: string;
+                name?: string;
                 description?: string;
                 cageType?: "Breeder" | "Pen";
                 AutoFeed?: boolean;
@@ -247,12 +247,8 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
                 weight?: string;
                 gender?: "Sire" | "Dam";
                 breedTypeId?: string;
+                birthDate?: Date;
                 deceaseDate?: Date;
-                lastBreedDate?: Date;
-                cageId?: string;
-                motherId?: string;
-                fatherId?: string;
-                kittenCageId?: string;
                 statusDate?: Date;
             };
             _input_out: {
@@ -262,12 +258,8 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
                 weight?: string;
                 gender?: "Sire" | "Dam";
                 breedTypeId?: string;
+                birthDate?: Date;
                 deceaseDate?: Date;
-                lastBreedDate?: Date;
-                cageId?: string;
-                motherId?: string;
-                fatherId?: string;
-                kittenCageId?: string;
                 statusDate?: Date;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
@@ -305,8 +297,8 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
         }, import(".prisma/client").Rabbit & {
-            Cage: import(".prisma/client").Cage;
             BreedType: import(".prisma/client").BreedType;
+            Cage: import(".prisma/client").Cage;
         }>;
         delete: import("@trpc/server").BuildProcedure<"mutation", {
             _config: import("@trpc/server").RootConfig<{
@@ -336,8 +328,8 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _meta: object;
             _ctx_out: object;
             _input_in: {
-                name?: string;
                 id?: string;
+                name?: string;
                 description?: string;
                 status?: string;
                 weight?: string;
@@ -346,8 +338,8 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
                 cageId?: string;
             };
             _input_out: {
-                name?: string;
                 id?: string;
+                name?: string;
                 description?: string;
                 status?: string;
                 weight?: string;
@@ -396,13 +388,9 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _ctx_out: object;
             _input_in: {
                 name?: string;
-                createdAt?: Date;
-                updateAt?: Date;
             };
             _input_out: {
                 name?: string;
-                createdAt?: Date;
-                updateAt?: Date;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -449,14 +437,14 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _meta: object;
             _ctx_out: object;
             _input_in: {
-                name?: string;
                 id?: string;
+                name?: string;
                 createdAt?: Date;
                 updateAt?: Date;
             };
             _input_out: {
-                name?: string;
                 id?: string;
+                name?: string;
                 createdAt?: Date;
                 updateAt?: Date;
             };
@@ -652,6 +640,22 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
+        }, {
+            ok: boolean;
+        }>;
+        weight: import("@trpc/server").BuildProcedure<"mutation", {
+            _config: import("@trpc/server").RootConfig<{
+                ctx: object;
+                meta: object;
+                errorShape: never;
+                transformer: import("@trpc/server").DataTransformerOptions;
+            }>;
+            _ctx_out: object;
+            _input_in: typeof import("@trpc/server").unsetMarker;
+            _input_out: typeof import("@trpc/server").unsetMarker;
+            _output_in: typeof import("@trpc/server").unsetMarker;
+            _output_out: typeof import("@trpc/server").unsetMarker;
+            _meta: object;
         }, {
             ok: boolean;
         }>;

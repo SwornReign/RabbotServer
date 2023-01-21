@@ -1,5 +1,5 @@
-import * as z from "zod";
-import { CompleteRabbit } from "./index";
+import * as z from 'zod';
+import { CompleteRabbit } from './index';
 export declare const _BreedRecordModel: z.ZodObject<{
     id: z.ZodString;
     breedDate: z.ZodDate;
@@ -61,4 +61,3 @@ export interface CompleteBreedRecord extends z.infer<typeof _BreedRecordModel> {
  *
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
-export declare const BreedRecordModel: z.ZodSchema<CompleteBreedRecord>;

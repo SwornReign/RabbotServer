@@ -1,6 +1,6 @@
-import * as z from "zod"
-import { CageType } from "@prisma/client"
-import { CompleteRabbit, RabbitModel } from "./index"
+import * as z from 'zod';
+import { CageType } from '@prisma/client';
+import { CompleteRabbit } from './index';
 
 export const _CageModel = z.object({
   id: z.string(),
@@ -17,19 +17,21 @@ export const _CageModel = z.object({
   weightGpio: z.number().int().array(),
   createdAt: z.date(),
   updateAt: z.date(),
-})
+});
 
 export interface CompleteCage extends z.infer<typeof _CageModel> {
-  Rabbit: CompleteRabbit[]
-  Kitten: CompleteRabbit[]
+  Rabbit: CompleteRabbit[];
+  Kitten: CompleteRabbit[];
 }
 
-/**
- * CageModel contains all relations on your model in addition to the scalars
- *
- * NOTE: Lazy required in case of potential circular dependencies within schema
- */
-export const CageModel: z.ZodSchema<CompleteCage> = z.lazy(() => _CageModel.extend({
-  Rabbit: RabbitModel.array(),
-  Kitten: RabbitModel.array(),
-}))
+// /**
+//  * CageModel contains all relations on your model in addition to the scalars
+//  *
+//  * NOTE: Lazy required in case of potential circular dependencies within schema
+//  */
+// export const CageModel: z.ZodSchema<CompleteCage> = z.lazy(() =>
+//   _CageModel.extend({
+//     Rabbit: RabbitModel.array(),
+//     Kitten: RabbitModel.array(),
+//   }),
+// );

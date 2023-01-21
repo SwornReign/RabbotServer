@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BreedTypeModel = exports._BreedTypeModel = void 0;
+exports._BreedTypeModel = void 0;
 const tslib_1 = require("tslib");
 const z = tslib_1.__importStar(require("zod"));
-const index_1 = require("./index");
 exports._BreedTypeModel = z.object({
     id: z.string(),
     name: z.string(),
@@ -15,7 +14,9 @@ exports._BreedTypeModel = z.object({
  *
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
-exports.BreedTypeModel = z.lazy(() => exports._BreedTypeModel.extend({
-    Rabbit: index_1.RabbitModel.array(),
-}));
+// export const BreedTypeModel: z.ZodSchema<CompleteBreedType> = z.lazy(() =>
+//   _BreedTypeModel.extend({
+//     Rabbit: RabbitModel.array(),
+//   }),
+// );
 //# sourceMappingURL=breedtype.js.map

@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BreedRecordModel = exports._BreedRecordModel = void 0;
+exports._BreedRecordModel = void 0;
 const tslib_1 = require("tslib");
 const z = tslib_1.__importStar(require("zod"));
-const index_1 = require("./index");
 exports._BreedRecordModel = z.object({
     id: z.string(),
     breedDate: z.date(),
@@ -27,8 +26,10 @@ exports._BreedRecordModel = z.object({
  *
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
-exports.BreedRecordModel = z.lazy(() => exports._BreedRecordModel.extend({
-    Sire: index_1.RabbitModel.nullish(),
-    Dam: index_1.RabbitModel.nullish(),
-}));
+// export const BreedRecordModel: z.ZodSchema<CompleteBreedRecord> = z.lazy(() =>
+//   _BreedRecordModel.extend({
+//     Sire: RabbitModel.nullish(),
+//     Dam: RabbitModel.nullish(),
+//   }),
+// );
 //# sourceMappingURL=breedrecord.js.map

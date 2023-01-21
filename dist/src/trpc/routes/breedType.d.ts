@@ -15,13 +15,9 @@ export declare const breedTypeRouter: import("@trpc/server").CreateRouterInner<i
         _ctx_out: object;
         _input_in: {
             name?: string;
-            createdAt?: Date;
-            updateAt?: Date;
         };
         _input_out: {
             name?: string;
-            createdAt?: Date;
-            updateAt?: Date;
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;
@@ -68,14 +64,14 @@ export declare const breedTypeRouter: import("@trpc/server").CreateRouterInner<i
         _meta: object;
         _ctx_out: object;
         _input_in: {
-            name?: string;
             id?: string;
+            name?: string;
             createdAt?: Date;
             updateAt?: Date;
         };
         _input_out: {
-            name?: string;
             id?: string;
+            name?: string;
             createdAt?: Date;
             updateAt?: Date;
         };
