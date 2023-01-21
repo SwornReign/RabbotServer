@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "compileOnSave": false,
   "compilerOptions": {
 <<<<<<< HEAD
@@ -32,6 +33,8 @@
 }
 >>>>>>> e0abaca9e7145c6ed4bc11f4e0ffb49245fb4e5a
 =======
+=======
+>>>>>>> parent of 3fd1810 (Weight System)
     "compilerOptions": {
       "target": "ESNext",
       "module": "ESNext",
@@ -46,5 +49,9 @@
     },
     "include": ["src/**/*.ts", "tests/**/*.ts"],
     "exclude": ["node_modules"]
+<<<<<<< HEAD
+  }
+>>>>>>> parent of 3fd1810 (Weight System)
+=======
   }
 >>>>>>> parent of 3fd1810 (Weight System)
