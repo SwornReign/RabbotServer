@@ -1,7 +1,7 @@
 import { router, publicProcedure, Models } from '../../trpc';
 import { z } from 'zod';
 import { _RabbitModel } from '../../zod';
-import { prisma } from '../..';
+import { prisma } from '../../app';
 
 const model: Models = 'rabbit'
 
