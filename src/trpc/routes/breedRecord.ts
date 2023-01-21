@@ -1,7 +1,7 @@
 import { router, publicProcedure, Models } from '..';
 import { z } from 'zod';
 import { _BreedRecordModel } from '../../zod';
-import { prisma } from '../../app';
+import { prisma } from '../..';
 import dayjs from 'dayjs';
 
 const model: Models = 'breedRecord'

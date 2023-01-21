@@ -1,6 +1,6 @@
 import { initTRPC } from '@trpc/server';
 import * as z from 'zod';
-import { prisma } from '../app';
+import { prisma } from '..';
 import { breedRecordRouter, breedTypeRouter, cageRouter, rabbitRouter } from './routes';
 import { gpioRouter } from './routes/gpio';
 export const t = initTRPC.create();
