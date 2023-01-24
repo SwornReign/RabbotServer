@@ -7,11 +7,7 @@ const app_1 = require("../../app");
 const funtions_1 = require("../../GPIO/funtions");
 const model = 'breedRecord';
 exports.gpioRouter = (0, __1.router)({
-    feed: __1.publicProcedure
-        .input(zod_1.z.object({
-        rabbitId: zod_1.z.string().uuid(),
-    }))
-        .mutation(async ({ input: { rabbitId } }) => {
+    feed: __1.publicProcedure.mutation(async () => {
         console.log('GPIO Feed');
         try {
             await (0, funtions_1.runMotor)();
@@ -34,7 +30,6 @@ exports.gpioRouter = (0, __1.router)({
     water: __1.publicProcedure
         .input(zod_1.z.object({
         interval: zod_1.z.number().optional().default(2000),
-        rabbitId: zod_1.z.string().uuid(),
     }))
         .mutation(async ({ input: { interval } }) => {
         console.log('GPIO Water');
