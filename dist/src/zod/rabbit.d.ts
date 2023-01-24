@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import { CompleteBreedType, CompleteCage, CompleteBreedRecord } from './index';
+import { CompleteCage } from './index';
 type Literal = boolean | number | string;
 type Json = Literal | {
     [key: string]: Json;
@@ -27,47 +27,44 @@ export declare const _RabbitModel: z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     id?: string;
     name?: string;
+    weight?: string;
     description?: string;
     status?: string;
-    weight?: string;
+    cageId?: string;
     gender?: "Sire" | "Dam";
-    breedTypeId?: string;
     birthDate?: Date;
     deceaseDate?: Date;
     lastBreedDate?: Date;
     breedGeo?: Json;
-    cageId?: string;
+    statusDate?: Date;
+    breedTypeId?: string;
     motherId?: string;
     fatherId?: string;
     kittenCageId?: string;
-    statusDate?: Date;
 }, {
     id?: string;
     name?: string;
+    weight?: string;
     description?: string;
     status?: string;
-    weight?: string;
+    cageId?: string;
     gender?: "Sire" | "Dam";
-    breedTypeId?: string;
     birthDate?: Date;
     deceaseDate?: Date;
     lastBreedDate?: Date;
     breedGeo?: Json;
-    cageId?: string;
+    statusDate?: Date;
+    breedTypeId?: string;
     motherId?: string;
     fatherId?: string;
     kittenCageId?: string;
-    statusDate?: Date;
 }>;
 export interface CompleteRabbit extends z.infer<typeof _RabbitModel> {
-    BreedType: CompleteBreedType;
     Cage?: CompleteCage | null;
     Mother?: CompleteRabbit | null;
     Father?: CompleteRabbit | null;
     RabbitMother: CompleteRabbit[];
     RabbitFather: CompleteRabbit[];
-    SireBreedRecord: CompleteBreedRecord[];
-    DamBreedRecord: CompleteBreedRecord[];
     CageKiiten?: CompleteCage | null;
 }
 export {};

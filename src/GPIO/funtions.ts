@@ -2,8 +2,8 @@ import { Gpio as gpio } from 'onoff';
 import HX711 from '@ataberkylmz/hx711';
 
 //Weight
-const WeightSCLK = 7;
-const WeightDATA = 0;
+const WeightSCLK = 3;
+const WeightDATA = 2;
 
 const WeightSystem = new HX711(WeightSCLK, WeightDATA);
 
@@ -84,7 +84,7 @@ const step1 = async function (stepCounter: number) {
 };
 
 const runMotor = async () => {
-  for (var s = 0; s < 50; s++) {
+  for (var s = 0; s < 25; s++) {
     for (var pin = 0; pin < Seq.length; pin++) {
       await step(pin);
     }
@@ -109,29 +109,38 @@ const runWater = async (interval: number) => {
 };
 
 const runWeight = async () => {
-  WeightSystem.powerUp();
+  //WeightSystem.powerUp();
   let WeightInput = WeightSystem.getScale();
   console.log('Grams: ' + WeightInput);
-  return new Promise((res) => {
-    WeightSystem.powerDown();
+
+  let units = WeightSystem.getUnits();
+  console.log('Units: ' + units);
+
+  let offset = WeightSystem.getOffset();
+  console.log('Offset: ' + offset);
+  await new Promise((res) => {
+    //WeightSystem.powerDown();
 
     setTimeout(res, 5);
   });
+
+  return units;
 };
 
 waterPin.writeSync(1); // Set to Default Water
 
+WeightSystem.powerDown(); // Set to Default Weight
+
+WeightSystem.setOffset(-30000);
+WeightSystem.setScale(368);
 WeightSystem.tare();
 
-let WeightInput = WeightSystem.getScale();
-console.log('Grams: ' + WeightInput);
+// function test() {
+//   console.log('Grams: ' + WeightSystem.getScale());
+//   console.log('Units: ' + WeightSystem.getUnits());
+//   console.log('Offset: ' + WeightSystem.getOffset());
+// }
 
-let units = WeightSystem.getUnits();
-console.log('Units: ' + units);
-
-let offset = WeightSystem.getOffset();
-console.log('Offset: ' + offset);
-
-WeightSystem.powerDown(); // Set to Default Weight
+// setInterval(test, 1000);
 
 export { runMotor, step, runWater, runWeight };

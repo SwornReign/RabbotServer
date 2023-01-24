@@ -127,6 +127,9 @@ model BreedRecord {
     noWean             Boolean?
     weightMF           String?
 
+    lastFeedDate  DateTime @default(now())
+    lastWaterDate DateTime @default(now())
+
     createdAt DateTime @default(now())
     updateAt  DateTime @updatedAt
 }

@@ -1,6 +1,6 @@
 import * as z from 'zod';
 import { RabbitGender } from '@prisma/client';
-import { CompleteBreedType, CompleteCage, CompleteBreedRecord } from './index';
+import { CompleteBreedType, CompleteCage } from './index';
 
 // Helper schema for JSON fields
 type Literal = boolean | number | string;
@@ -30,14 +30,14 @@ export const _RabbitModel = z.object({
 });
 
 export interface CompleteRabbit extends z.infer<typeof _RabbitModel> {
-  BreedType: CompleteBreedType;
+  //BreedType: CompleteBreedType;
   Cage?: CompleteCage | null;
   Mother?: CompleteRabbit | null;
   Father?: CompleteRabbit | null;
   RabbitMother: CompleteRabbit[];
   RabbitFather: CompleteRabbit[];
-  SireBreedRecord: CompleteBreedRecord[];
-  DamBreedRecord: CompleteBreedRecord[];
+  //SireBreedRecord: CompleteBreedRecord[];
+  //DamBreedRecord: CompleteBreedRecord[];
   CageKiiten?: CompleteCage | null;
 }
 
@@ -46,14 +46,16 @@ export interface CompleteRabbit extends z.infer<typeof _RabbitModel> {
  *
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
-// export const RabbitModel: z.ZodSchema<CompleteRabbit> = z.lazy(() => _RabbitModel.extend({
-//   BreedType: BreedTypeModel,
-//   Cage: CageModel.nullish(),
-//   Mother: RabbitModel.nullish(),
-//   Father: RabbitModel.nullish(),
-//   RabbitMother: RabbitModel.array(),
-//   RabbitFather: RabbitModel.array(),
-//   SireBreedRecord: BreedRecordModel.array(),
-//   DamBreedRecord: BreedRecordModel.array(),
-//   CageKiiten: CageModel.nullish(),
-// }))
+// export const RabbitModel: z.ZodSchema<CompleteRabbit> = z.lazy(() =>
+//   _RabbitModel.extend({
+//     //BreedType: BreedTypeModel,
+//     Cage: CageModel.nullish(),
+//     Mother: RabbitModel.nullish(),
+//     Father: RabbitModel.nullish(),
+//     RabbitMother: RabbitModel.array(),
+//     RabbitFather: RabbitModel.array(),
+//     //SireBreedRecord: BreedRecordModel.array(),
+//     //DamBreedRecord: BreedRecordModel.array(),
+//     CageKiiten: CageModel.nullish(),
+//   }),
+// );

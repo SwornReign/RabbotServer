@@ -14,22 +14,22 @@ export declare const breedRecordRouter: import("@trpc/server").CreateRouterInner
         _meta: object;
         _ctx_out: object;
         _input_in: {
-            description?: string;
             breedDate?: string;
-            damWeight?: string;
             expectedKindleDate?: string;
             nestBoxDate?: string;
             kindleDate?: string;
             weanDate?: string;
+            damWeight?: string;
+            description?: string;
         };
         _input_out: {
-            description?: string;
             breedDate?: string;
-            damWeight?: string;
             expectedKindleDate?: string;
             nestBoxDate?: string;
             kindleDate?: string;
             weanDate?: string;
+            damWeight?: string;
+            description?: string;
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;
@@ -95,39 +95,21 @@ export declare const breedRecordRouter: import("@trpc/server").CreateRouterInner
         _ctx_out: object;
         _input_in: {
             id?: string;
-            description?: string;
-            createdAt?: Date;
-            updateAt?: Date;
             breedDate?: Date;
-            sireId?: string;
-            damId?: string;
-            damWeight?: string;
-            testDate?: Date;
             expectedKindleDate?: Date;
             nestBoxDate?: Date;
             kindleDate?: Date;
-            noKits?: boolean;
             weanDate?: Date;
-            noWean?: boolean;
-            weightMF?: string;
+            description?: string;
         };
         _input_out: {
             id?: string;
-            description?: string;
-            createdAt?: Date;
-            updateAt?: Date;
             breedDate?: Date;
-            sireId?: string;
-            damId?: string;
-            damWeight?: string;
-            testDate?: Date;
             expectedKindleDate?: Date;
             nestBoxDate?: Date;
             kindleDate?: Date;
-            noKits?: boolean;
             weanDate?: Date;
-            noWean?: boolean;
-            weightMF?: string;
+            description?: string;
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;

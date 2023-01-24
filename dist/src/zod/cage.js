@@ -20,15 +20,13 @@ exports._CageModel = z.object({
     createdAt: z.date(),
     updateAt: z.date(),
 });
-// /**
-//  * CageModel contains all relations on your model in addition to the scalars
-//  *
-//  * NOTE: Lazy required in case of potential circular dependencies within schema
-//  */
-// export const CageModel: z.ZodSchema<CompleteCage> = z.lazy(() =>
-//   _CageModel.extend({
-//     Rabbit: RabbitModel.array(),
-//     Kitten: RabbitModel.array(),
-//   }),
-// );
+/**
+ * CageModel contains all relations on your model in addition to the scalars
+ *
+ * NOTE: Lazy required in case of potential circular dependencies within schema
+ */
+// export const CageModel: z.ZodSchema<CompleteCage> = z.lazy(() => _CageModel.extend({
+//   Rabbit: RabbitModel.array(),
+//   Kitten: RabbitModel.array(),
+// }))
 //# sourceMappingURL=cage.js.map

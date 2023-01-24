@@ -47,14 +47,16 @@ export const gpioRouter = router({
     console.log('GPIO Weight');
 
     try {
-      await runWeight();
+      const value = await runWeight();
 
       return {
         ok: true,
+        weight: value,
       };
     } catch (error) {
       return {
         ok: false,
+        weight: 0,
       };
     }
   }),

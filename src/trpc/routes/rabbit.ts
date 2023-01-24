@@ -19,6 +19,7 @@ export const rabbitRouter = router({
         breedGeo: true,
         lastBreedDate: true,
         BreedType: true,
+        birthDate: true,
       }),
     )
     .mutation(({ input }) => {

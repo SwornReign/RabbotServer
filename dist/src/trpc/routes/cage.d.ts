@@ -111,6 +111,7 @@ export declare const cageRouter: import("@trpc/server").CreateRouterInner<import
             description?: string;
             cageType?: "Breeder" | "Pen";
             AutoFeed?: boolean;
+            feedTime?: string[];
         };
         _input_out: {
             id?: string;
@@ -118,6 +119,7 @@ export declare const cageRouter: import("@trpc/server").CreateRouterInner<import
             description?: string;
             cageType?: "Breeder" | "Pen";
             AutoFeed?: boolean;
+            feedTime?: string[];
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;
@@ -132,12 +134,12 @@ export declare const cageRouter: import("@trpc/server").CreateRouterInner<import
         _meta: object;
         _ctx_out: object;
         _input_in: {
-            cageId?: string;
             rabbitId?: string;
+            cageId?: string;
         };
         _input_out: {
-            cageId?: string;
             rabbitId?: string;
+            cageId?: string;
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;

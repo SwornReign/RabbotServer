@@ -30,9 +30,7 @@ export interface CompleteBreedRecord extends z.infer<typeof _BreedRecordModel> {
  *
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
-// export const BreedRecordModel: z.ZodSchema<CompleteBreedRecord> = z.lazy(() =>
-//   _BreedRecordModel.extend({
-//     Sire: RabbitModel.nullish(),
-//     Dam: RabbitModel.nullish(),
-//   }),
-// );
+// export const BreedRecordModel: z.ZodSchema<CompleteBreedRecord> = z.lazy(() => _BreedRecordModel.extend({
+//   Sire: RabbitModel.nullish(),
+//   Dam: RabbitModel.nullish(),
+// }))

@@ -1,6 +1,5 @@
-
-import path from 'path'
-import { Gpio as gpio } from 'onoff'
+import path from 'path';
+import { Gpio as gpio } from 'onoff';
 import fastify from 'fastify';
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify';
 import { appRouter } from './trpc/router';
@@ -15,7 +14,7 @@ import { PrismaClient } from '@prisma/client';
 
 //const __dirname = path.dirname(__filename);
 
-export const prisma = new PrismaClient()
+export const prisma = new PrismaClient();
 
 const server = fastify({
   maxParamLength: 5000,
@@ -27,19 +26,18 @@ server.register(fastifyCors, () => {
   return (req: any, callback: any) => {
     const corsOptions = {
       // This is NOT recommended for production as it enables reflection exploits
-      origin: true
+      origin: true,
     };
 
     // do not include CORS headers for requests from localhost
     if (/^localhost$/m.test(req.headers.origin)) {
-      corsOptions.origin = false
+      corsOptions.origin = false;
     }
 
     // callback expects two parameters: error and options
-    callback(null, corsOptions)
-  }
-})
-
+    callback(null, corsOptions);
+  };
+});
 
 //use GPIO pin numbers
 const stepPins = [17, 22, 27, 23];
@@ -62,12 +60,9 @@ Seq[6] = [0, 0, 0, 1];
 Seq[7] = [1, 0, 0, 1];
 Seq[8] = [0, 0, 0, 0];
 
-
 // for (var i = 0; i < pinNumber; i++) {
 //   pins[i] = new gpio(stepPins[i], "out");
 // }
-
-
 
 var step = async function (stepCounter: number) {
   return new Promise((res) => {
@@ -98,7 +93,7 @@ const runWater = async (interval: number) => {
     setTimeout(() => {
       //waterPin.writeSync(1);
       res(undefined);
-    }, interval || waterTimeout)
+    }, interval || waterTimeout),
   );
 };
 
@@ -108,7 +103,7 @@ const runWater = async (interval: number) => {
 //   prefix: "/",
 // });
 
-server.get("/", async (request, reply) => {
+server.get('/', async (request, reply) => {
   return { RabbotServer: true };
 });
 
@@ -117,22 +112,21 @@ server.register(fastifyTRPCPlugin, {
   trpcOptions: { router: appRouter, createContext },
 });
 
-server.post("/Food", async (request, reply) => {
+server.post('/Food', async (request, reply) => {
   await runMotor();
   return { Food: true };
 });
 
-
-server.get("/breed", async (request, reply) => {
+server.get('/breed', async (request, reply) => {
   const breed = await prisma.breedType.create({
-                data: {
-                    name: 'Flemish Giant',
-                }
-            })
+    data: {
+      name: 'Flemish Giant',
+    },
+  });
   return breed;
 });
 
-server.post("/Water", async (request, reply) => {
+server.post('/Water', async (request, reply) => {
   const { interval } = request.body as { interval: number };
   await runWater(interval);
   //waterPin.writeSync(1);
@@ -142,7 +136,9 @@ server.post("/Water", async (request, reply) => {
 // Run the server!
 const start = async () => {
   try {
-    await server.listen({ port: 5000, host: "0.0.0.0" });
+    await server.listen({ port: 5000, host: '0.0.0.0' });
+
+    console.log(`Rabbot Server Now Working in port: ${5000}`);
   } catch (err) {
     server.log.error(err);
     process.exit(1);

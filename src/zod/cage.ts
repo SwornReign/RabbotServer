@@ -24,14 +24,12 @@ export interface CompleteCage extends z.infer<typeof _CageModel> {
   Kitten: CompleteRabbit[];
 }
 
-// /**
-//  * CageModel contains all relations on your model in addition to the scalars
-//  *
-//  * NOTE: Lazy required in case of potential circular dependencies within schema
-//  */
-// export const CageModel: z.ZodSchema<CompleteCage> = z.lazy(() =>
-//   _CageModel.extend({
-//     Rabbit: RabbitModel.array(),
-//     Kitten: RabbitModel.array(),
-//   }),
-// );
+/**
+ * CageModel contains all relations on your model in addition to the scalars
+ *
+ * NOTE: Lazy required in case of potential circular dependencies within schema
+ */
+// export const CageModel: z.ZodSchema<CompleteCage> = z.lazy(() => _CageModel.extend({
+//   Rabbit: RabbitModel.array(),
+//   Kitten: RabbitModel.array(),
+// }))

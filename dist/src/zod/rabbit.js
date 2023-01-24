@@ -29,15 +29,17 @@ exports._RabbitModel = z.object({
  *
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
-// export const RabbitModel: z.ZodSchema<CompleteRabbit> = z.lazy(() => _RabbitModel.extend({
-//   BreedType: BreedTypeModel,
-//   Cage: CageModel.nullish(),
-//   Mother: RabbitModel.nullish(),
-//   Father: RabbitModel.nullish(),
-//   RabbitMother: RabbitModel.array(),
-//   RabbitFather: RabbitModel.array(),
-//   SireBreedRecord: BreedRecordModel.array(),
-//   DamBreedRecord: BreedRecordModel.array(),
-//   CageKiiten: CageModel.nullish(),
-// }))
+// export const RabbitModel: z.ZodSchema<CompleteRabbit> = z.lazy(() =>
+//   _RabbitModel.extend({
+//     //BreedType: BreedTypeModel,
+//     Cage: CageModel.nullish(),
+//     Mother: RabbitModel.nullish(),
+//     Father: RabbitModel.nullish(),
+//     RabbitMother: RabbitModel.array(),
+//     RabbitFather: RabbitModel.array(),
+//     //SireBreedRecord: BreedRecordModel.array(),
+//     //DamBreedRecord: BreedRecordModel.array(),
+//     CageKiiten: CageModel.nullish(),
+//   }),
+// );
 //# sourceMappingURL=rabbit.js.map

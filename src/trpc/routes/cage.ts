@@ -68,6 +68,7 @@ export const cageRouter = router({
         description: z.string().optional(),
         cageType: z.enum(['Breeder', 'Pen']).optional(),
         AutoFeed: z.boolean().optional(),
+        feedTime: z.string().array().optional(),
       }),
     )
     .mutation(async ({ input }) => {
@@ -91,6 +92,7 @@ export const cageRouter = router({
 
           const c = cron.schedule(`${minute} ${hour} * * *`, async () => {
             await runMotor();
+            console.log(`AutoFeed Run [${dayjs().format()}]`);
           });
 
           c.start();

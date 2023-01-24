@@ -15,25 +15,23 @@ export declare const rabbitRouter: import("@trpc/server").CreateRouterInner<impo
         _ctx_out: object;
         _input_in: {
             name?: string;
+            weight?: string;
             description?: string;
             status?: string;
-            weight?: string;
             gender?: "Sire" | "Dam";
-            breedTypeId?: string;
-            birthDate?: Date;
             deceaseDate?: Date;
             statusDate?: Date;
+            breedTypeId?: string;
         };
         _input_out: {
             name?: string;
+            weight?: string;
             description?: string;
             status?: string;
-            weight?: string;
             gender?: "Sire" | "Dam";
-            breedTypeId?: string;
-            birthDate?: Date;
             deceaseDate?: Date;
             statusDate?: Date;
+            breedTypeId?: string;
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;
@@ -70,8 +68,8 @@ export declare const rabbitRouter: import("@trpc/server").CreateRouterInner<impo
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;
     }, import(".prisma/client").Rabbit & {
-        BreedType: import(".prisma/client").BreedType;
         Cage: import(".prisma/client").Cage;
+        BreedType: import(".prisma/client").BreedType;
     }>;
     delete: import("@trpc/server").BuildProcedure<"mutation", {
         _config: import("@trpc/server").RootConfig<{
@@ -103,22 +101,22 @@ export declare const rabbitRouter: import("@trpc/server").CreateRouterInner<impo
         _input_in: {
             id?: string;
             name?: string;
+            weight?: string;
             description?: string;
             status?: string;
-            weight?: string;
+            cageId?: string;
             gender?: "Sire" | "Dam";
             breedTypeId?: string;
-            cageId?: string;
         };
         _input_out: {
             id?: string;
             name?: string;
+            weight?: string;
             description?: string;
             status?: string;
-            weight?: string;
+            cageId?: string;
             gender?: "Sire" | "Dam";
             breedTypeId?: string;
-            cageId?: string;
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;
@@ -133,12 +131,12 @@ export declare const rabbitRouter: import("@trpc/server").CreateRouterInner<impo
         _meta: object;
         _ctx_out: object;
         _input_in: {
-            cageId?: string;
             rabbitId?: string;
+            cageId?: string;
         };
         _input_out: {
-            cageId?: string;
             rabbitId?: string;
+            cageId?: string;
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;

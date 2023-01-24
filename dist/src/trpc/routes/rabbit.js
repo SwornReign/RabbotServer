@@ -19,6 +19,7 @@ exports.rabbitRouter = (0, trpc_1.router)({
         breedGeo: true,
         lastBreedDate: true,
         BreedType: true,
+        birthDate: true,
     }))
         .mutation(({ input }) => {
         return app_1.prisma[model].create({

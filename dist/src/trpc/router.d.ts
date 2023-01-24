@@ -173,6 +173,7 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
                 description?: string;
                 cageType?: "Breeder" | "Pen";
                 AutoFeed?: boolean;
+                feedTime?: string[];
             };
             _input_out: {
                 id?: string;
@@ -180,6 +181,7 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
                 description?: string;
                 cageType?: "Breeder" | "Pen";
                 AutoFeed?: boolean;
+                feedTime?: string[];
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -194,12 +196,12 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _meta: object;
             _ctx_out: object;
             _input_in: {
-                cageId?: string;
                 rabbitId?: string;
+                cageId?: string;
             };
             _input_out: {
-                cageId?: string;
                 rabbitId?: string;
+                cageId?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -242,25 +244,23 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _ctx_out: object;
             _input_in: {
                 name?: string;
+                weight?: string;
                 description?: string;
                 status?: string;
-                weight?: string;
                 gender?: "Sire" | "Dam";
-                breedTypeId?: string;
-                birthDate?: Date;
                 deceaseDate?: Date;
                 statusDate?: Date;
+                breedTypeId?: string;
             };
             _input_out: {
                 name?: string;
+                weight?: string;
                 description?: string;
                 status?: string;
-                weight?: string;
                 gender?: "Sire" | "Dam";
-                breedTypeId?: string;
-                birthDate?: Date;
                 deceaseDate?: Date;
                 statusDate?: Date;
+                breedTypeId?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -297,8 +297,8 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
         }, import(".prisma/client").Rabbit & {
-            BreedType: import(".prisma/client").BreedType;
             Cage: import(".prisma/client").Cage;
+            BreedType: import(".prisma/client").BreedType;
         }>;
         delete: import("@trpc/server").BuildProcedure<"mutation", {
             _config: import("@trpc/server").RootConfig<{
@@ -330,22 +330,22 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _input_in: {
                 id?: string;
                 name?: string;
+                weight?: string;
                 description?: string;
                 status?: string;
-                weight?: string;
+                cageId?: string;
                 gender?: "Sire" | "Dam";
                 breedTypeId?: string;
-                cageId?: string;
             };
             _input_out: {
                 id?: string;
                 name?: string;
+                weight?: string;
                 description?: string;
                 status?: string;
-                weight?: string;
+                cageId?: string;
                 gender?: "Sire" | "Dam";
                 breedTypeId?: string;
-                cageId?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -360,12 +360,12 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _meta: object;
             _ctx_out: object;
             _input_in: {
-                cageId?: string;
                 rabbitId?: string;
+                cageId?: string;
             };
             _input_out: {
-                cageId?: string;
                 rabbitId?: string;
+                cageId?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -482,22 +482,22 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _meta: object;
             _ctx_out: object;
             _input_in: {
-                description?: string;
                 breedDate?: string;
-                damWeight?: string;
                 expectedKindleDate?: string;
                 nestBoxDate?: string;
                 kindleDate?: string;
                 weanDate?: string;
+                damWeight?: string;
+                description?: string;
             };
             _input_out: {
-                description?: string;
                 breedDate?: string;
-                damWeight?: string;
                 expectedKindleDate?: string;
                 nestBoxDate?: string;
                 kindleDate?: string;
                 weanDate?: string;
+                damWeight?: string;
+                description?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -563,39 +563,21 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _ctx_out: object;
             _input_in: {
                 id?: string;
-                description?: string;
-                createdAt?: Date;
-                updateAt?: Date;
                 breedDate?: Date;
-                sireId?: string;
-                damId?: string;
-                damWeight?: string;
-                testDate?: Date;
                 expectedKindleDate?: Date;
                 nestBoxDate?: Date;
                 kindleDate?: Date;
-                noKits?: boolean;
                 weanDate?: Date;
-                noWean?: boolean;
-                weightMF?: string;
+                description?: string;
             };
             _input_out: {
                 id?: string;
-                description?: string;
-                createdAt?: Date;
-                updateAt?: Date;
                 breedDate?: Date;
-                sireId?: string;
-                damId?: string;
-                damWeight?: string;
-                testDate?: Date;
                 expectedKindleDate?: Date;
                 nestBoxDate?: Date;
                 kindleDate?: Date;
-                noKits?: boolean;
                 weanDate?: Date;
-                noWean?: boolean;
-                weightMF?: string;
+                description?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -658,6 +640,7 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _meta: object;
         }, {
             ok: boolean;
+            weight: number;
         }>;
         autoFeed: import("@trpc/server").BuildProcedure<"mutation", {
             _config: import("@trpc/server").RootConfig<{
@@ -683,6 +666,86 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
         }, {
             ok: boolean;
         }>;
+    }>;
+    weight: import("@trpc/server").CreateRouterInner<import("@trpc/server").RootConfig<{
+        ctx: object;
+        meta: object;
+        errorShape: never;
+        transformer: import("@trpc/server").DataTransformerOptions;
+    }>, {
+        toggleError: import("@trpc/server").BuildProcedure<"mutation", {
+            _config: import("@trpc/server").RootConfig<{
+                ctx: object;
+                meta: object;
+                errorShape: never;
+                transformer: import("@trpc/server").DataTransformerOptions;
+            }>;
+            _meta: object;
+            _ctx_out: object;
+            _input_in: boolean;
+            _input_out: boolean;
+            _output_in: typeof import("@trpc/server").unsetMarker;
+            _output_out: typeof import("@trpc/server").unsetMarker;
+        }, void>;
+        getToggleError: import("@trpc/server").BuildProcedure<"query", {
+            _config: import("@trpc/server").RootConfig<{
+                ctx: object;
+                meta: object;
+                errorShape: never;
+                transformer: import("@trpc/server").DataTransformerOptions;
+            }>;
+            _ctx_out: object;
+            _input_in: typeof import("@trpc/server").unsetMarker;
+            _input_out: typeof import("@trpc/server").unsetMarker;
+            _output_in: typeof import("@trpc/server").unsetMarker;
+            _output_out: typeof import("@trpc/server").unsetMarker;
+            _meta: object;
+        }, boolean>;
+        setWeight: import("@trpc/server").BuildProcedure<"mutation", {
+            _config: import("@trpc/server").RootConfig<{
+                ctx: object;
+                meta: object;
+                errorShape: never;
+                transformer: import("@trpc/server").DataTransformerOptions;
+            }>;
+            _meta: object;
+            _ctx_out: object;
+            _input_in: string;
+            _input_out: string;
+            _output_in: typeof import("@trpc/server").unsetMarker;
+            _output_out: typeof import("@trpc/server").unsetMarker;
+        }, void>;
+        startWeight: import("@trpc/server").BuildProcedure<"mutation", {
+            _config: import("@trpc/server").RootConfig<{
+                ctx: object;
+                meta: object;
+                errorShape: never;
+                transformer: import("@trpc/server").DataTransformerOptions;
+            }>;
+            _ctx_out: object;
+            _input_in: typeof import("@trpc/server").unsetMarker;
+            _input_out: typeof import("@trpc/server").unsetMarker;
+            _output_in: typeof import("@trpc/server").unsetMarker;
+            _output_out: typeof import("@trpc/server").unsetMarker;
+            _meta: object;
+        }, {
+            isOk: boolean;
+            weight: string;
+        }>;
+        getWeight: import("@trpc/server").BuildProcedure<"query", {
+            _config: import("@trpc/server").RootConfig<{
+                ctx: object;
+                meta: object;
+                errorShape: never;
+                transformer: import("@trpc/server").DataTransformerOptions;
+            }>;
+            _ctx_out: object;
+            _input_in: typeof import("@trpc/server").unsetMarker;
+            _input_out: typeof import("@trpc/server").unsetMarker;
+            _output_in: typeof import("@trpc/server").unsetMarker;
+            _output_out: typeof import("@trpc/server").unsetMarker;
+            _meta: object;
+        }, string>;
     }>;
 }>;
 export type AppRouter = typeof appRouter;
