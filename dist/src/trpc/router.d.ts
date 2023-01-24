@@ -596,12 +596,16 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
                 errorShape: never;
                 transformer: import("@trpc/server").DataTransformerOptions;
             }>;
+            _meta: object;
             _ctx_out: object;
-            _input_in: typeof import("@trpc/server").unsetMarker;
-            _input_out: typeof import("@trpc/server").unsetMarker;
+            _input_in: {
+                cageId?: string;
+            };
+            _input_out: {
+                cageId?: string;
+            };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
-            _meta: object;
         }, {
             ok: boolean;
         }>;
@@ -615,9 +619,11 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _meta: object;
             _ctx_out: object;
             _input_in: {
+                cageId?: string;
                 interval?: number;
             };
             _input_out: {
+                cageId?: string;
                 interval?: number;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
@@ -746,6 +752,33 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _output_out: typeof import("@trpc/server").unsetMarker;
             _meta: object;
         }, string>;
+    }>;
+    logs: import("@trpc/server").CreateRouterInner<import("@trpc/server").RootConfig<{
+        ctx: object;
+        meta: object;
+        errorShape: never;
+        transformer: import("@trpc/server").DataTransformerOptions;
+    }>, {
+        list: import("@trpc/server").BuildProcedure<"query", {
+            _config: import("@trpc/server").RootConfig<{
+                ctx: object;
+                meta: object;
+                errorShape: never;
+                transformer: import("@trpc/server").DataTransformerOptions;
+            }>;
+            _meta: object;
+            _ctx_out: object;
+            _input_in: {
+                type?: "Feed" | "Water";
+                cageId?: string;
+            };
+            _input_out: {
+                type?: "Feed" | "Water";
+                cageId?: string;
+            };
+            _output_in: typeof import("@trpc/server").unsetMarker;
+            _output_out: typeof import("@trpc/server").unsetMarker;
+        }, import(".prisma/client").Logs[]>;
     }>;
 }>;
 export type AppRouter = typeof appRouter;
