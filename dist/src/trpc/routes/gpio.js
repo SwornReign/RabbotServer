@@ -3,13 +3,28 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.gpioRouter = void 0;
 const __1 = require("..");
 const zod_1 = require("zod");
+const app_1 = require("../../app");
 const funtions_1 = require("../../GPIO/funtions");
 const model = 'breedRecord';
 exports.gpioRouter = (0, __1.router)({
-    feed: __1.publicProcedure.mutation(async () => {
+    feed: __1.publicProcedure
+        .input(zod_1.z.object({
+        rabbitId: zod_1.z.string().uuid(),
+    }))
+        .mutation(async ({ input: { rabbitId } }) => {
         console.log('GPIO Feed');
         try {
             await (0, funtions_1.runMotor)();
+            await app_1.prisma[model].updateMany({
+                where: {
+                    NOT: {
+                        createdAt: new Date('1/1/2000'),
+                    },
+                },
+                data: {
+                    lastFeedDate: new Date(),
+                },
+            });
             return {
                 ok: true,
             };
@@ -23,11 +38,22 @@ exports.gpioRouter = (0, __1.router)({
     water: __1.publicProcedure
         .input(zod_1.z.object({
         interval: zod_1.z.number().optional().default(2000),
+        rabbitId: zod_1.z.string().uuid(),
     }))
         .mutation(async ({ input: { interval } }) => {
         console.log('GPIO Water');
         try {
             await (0, funtions_1.runWater)(interval);
+            await app_1.prisma[model].updateMany({
+                where: {
+                    NOT: {
+                        createdAt: new Date('1/1/2000'),
+                    },
+                },
+                data: {
+                    lastWaterDate: new Date(),
+                },
+            });
             return {
                 ok: true,
             };

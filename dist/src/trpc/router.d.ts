@@ -596,12 +596,16 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
                 errorShape: never;
                 transformer: import("@trpc/server").DataTransformerOptions;
             }>;
+            _meta: object;
             _ctx_out: object;
-            _input_in: typeof import("@trpc/server").unsetMarker;
-            _input_out: typeof import("@trpc/server").unsetMarker;
+            _input_in: {
+                rabbitId?: string;
+            };
+            _input_out: {
+                rabbitId?: string;
+            };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
-            _meta: object;
         }, {
             ok: boolean;
         }>;
@@ -616,9 +620,11 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _ctx_out: object;
             _input_in: {
                 interval?: number;
+                rabbitId?: string;
             };
             _input_out: {
                 interval?: number;
+                rabbitId?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
