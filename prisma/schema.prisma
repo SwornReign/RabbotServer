@@ -10,11 +10,11 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-generator zod {
-    provider      = "zod-prisma"
-    output        = "../src/zod"
-    relationModel = "default"
-}
+// generator zod {
+//     provider      = "zod-prisma"
+//     output        = "../src/zod"
+//     relationModel = "default"
+// }
 
 enum CageType {
     Breeder

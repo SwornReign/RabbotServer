@@ -9,30 +9,59 @@ import cron from 'node-cron';
 const model: Models = 'breedRecord';
 
 export const gpioRouter = router({
-  feed: publicProcedure.mutation(async () => {
-    console.log('GPIO Feed');
-    try {
-      await runMotor();
+  feed: publicProcedure
+    .input(
+      z.object({
+        rabbitId: z.string().uuid(),
+      }),
+    )
+    .mutation(async ({ input: { rabbitId } }) => {
+      console.log('GPIO Feed');
+      try {
+        await runMotor();
 
-      return {
-        ok: true,
-      };
-    } catch (error) {
-      return {
-        ok: false,
-      };
-    }
-  }),
+        await prisma[model].updateMany({
+          where: {
+            NOT: {
+              createdAt: new Date('1/1/2000'),
+            },
+          },
+          data: {
+            lastFeedDate: new Date(),
+          },
+        });
+
+        return {
+          ok: true,
+        };
+      } catch (error) {
+        return {
+          ok: false,
+        };
+      }
+    }),
   water: publicProcedure
     .input(
       z.object({
         interval: z.number().optional().default(2000),
+        rabbitId: z.string().uuid(),
       }),
     )
     .mutation(async ({ input: { interval } }) => {
       console.log('GPIO Water');
       try {
         await runWater(interval);
+
+        await prisma[model].updateMany({
+          where: {
+            NOT: {
+              createdAt: new Date('1/1/2000'),
+            },
+          },
+          data: {
+            lastWaterDate: new Date(),
+          },
+        });
 
         return {
           ok: true,
