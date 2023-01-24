@@ -34,12 +34,12 @@ export declare const gpioRouter: import("@trpc/server").CreateRouterInner<import
         _meta: object;
         _ctx_out: object;
         _input_in: {
-            interval?: number;
             rabbitId?: string;
+            interval?: number;
         };
         _input_out: {
-            interval?: number;
             rabbitId?: string;
+            interval?: number;
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;

@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../distTest/src/routes/example/index.js"],"names":[],"mappings":"AAAA,YAAY,CAAC;AACb,MAAM,CAAC,OAAO,GAAG,KAAK,WAAW,OAAO,EAAE,IAAI;IAC1C,OAAO,CAAC,GAAG,CAAC,GAAG,EAAE,KAAK,WAAW,OAAO,EAAE,KAAK;QAC3C,OAAO,oBAAoB,CAAC;IAChC,CAAC,CAAC,CAAC;AACP,CAAC,CAAC"}

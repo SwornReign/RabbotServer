@@ -15,23 +15,23 @@ export declare const rabbitRouter: import("@trpc/server").CreateRouterInner<impo
         _ctx_out: object;
         _input_in: {
             name?: string;
-            weight?: string;
             description?: string;
             status?: string;
+            weight?: string;
             gender?: "Sire" | "Dam";
+            breedTypeId?: string;
             deceaseDate?: Date;
             statusDate?: Date;
-            breedTypeId?: string;
         };
         _input_out: {
             name?: string;
-            weight?: string;
             description?: string;
             status?: string;
+            weight?: string;
             gender?: "Sire" | "Dam";
+            breedTypeId?: string;
             deceaseDate?: Date;
             statusDate?: Date;
-            breedTypeId?: string;
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;
@@ -101,22 +101,22 @@ export declare const rabbitRouter: import("@trpc/server").CreateRouterInner<impo
         _input_in: {
             id?: string;
             name?: string;
-            weight?: string;
             description?: string;
             status?: string;
-            cageId?: string;
+            weight?: string;
             gender?: "Sire" | "Dam";
             breedTypeId?: string;
+            cageId?: string;
         };
         _input_out: {
             id?: string;
             name?: string;
-            weight?: string;
             description?: string;
             status?: string;
-            cageId?: string;
+            weight?: string;
             gender?: "Sire" | "Dam";
             breedTypeId?: string;
+            cageId?: string;
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;
@@ -131,12 +131,12 @@ export declare const rabbitRouter: import("@trpc/server").CreateRouterInner<impo
         _meta: object;
         _ctx_out: object;
         _input_in: {
-            rabbitId?: string;
             cageId?: string;
+            rabbitId?: string;
         };
         _input_out: {
-            rabbitId?: string;
             cageId?: string;
+            rabbitId?: string;
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;

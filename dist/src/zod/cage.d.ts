@@ -21,8 +21,6 @@ export declare const _CageModel: z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     id?: string;
     name?: string;
-    createdAt?: Date;
-    updateAt?: Date;
     description?: string;
     cageType?: "Breeder" | "Pen";
     AutoFeed?: boolean;
@@ -33,11 +31,11 @@ export declare const _CageModel: z.ZodObject<{
     waterGpio?: number;
     foodGpio?: number[];
     weightGpio?: number[];
+    createdAt?: Date;
+    updateAt?: Date;
 }, {
     id?: string;
     name?: string;
-    createdAt?: Date;
-    updateAt?: Date;
     description?: string;
     cageType?: "Breeder" | "Pen";
     AutoFeed?: boolean;
@@ -48,6 +46,8 @@ export declare const _CageModel: z.ZodObject<{
     waterGpio?: number;
     foodGpio?: number[];
     weightGpio?: number[];
+    createdAt?: Date;
+    updateAt?: Date;
 }>;
 export interface CompleteCage extends z.infer<typeof _CageModel> {
     Rabbit: CompleteRabbit[];

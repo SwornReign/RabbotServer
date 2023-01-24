@@ -196,12 +196,12 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _meta: object;
             _ctx_out: object;
             _input_in: {
-                rabbitId?: string;
                 cageId?: string;
+                rabbitId?: string;
             };
             _input_out: {
-                rabbitId?: string;
                 cageId?: string;
+                rabbitId?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -244,23 +244,23 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _ctx_out: object;
             _input_in: {
                 name?: string;
-                weight?: string;
                 description?: string;
                 status?: string;
+                weight?: string;
                 gender?: "Sire" | "Dam";
+                breedTypeId?: string;
                 deceaseDate?: Date;
                 statusDate?: Date;
-                breedTypeId?: string;
             };
             _input_out: {
                 name?: string;
-                weight?: string;
                 description?: string;
                 status?: string;
+                weight?: string;
                 gender?: "Sire" | "Dam";
+                breedTypeId?: string;
                 deceaseDate?: Date;
                 statusDate?: Date;
-                breedTypeId?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -330,22 +330,22 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _input_in: {
                 id?: string;
                 name?: string;
-                weight?: string;
                 description?: string;
                 status?: string;
-                cageId?: string;
+                weight?: string;
                 gender?: "Sire" | "Dam";
                 breedTypeId?: string;
+                cageId?: string;
             };
             _input_out: {
                 id?: string;
                 name?: string;
-                weight?: string;
                 description?: string;
                 status?: string;
-                cageId?: string;
+                weight?: string;
                 gender?: "Sire" | "Dam";
                 breedTypeId?: string;
+                cageId?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -360,12 +360,12 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _meta: object;
             _ctx_out: object;
             _input_in: {
-                rabbitId?: string;
                 cageId?: string;
+                rabbitId?: string;
             };
             _input_out: {
-                rabbitId?: string;
                 cageId?: string;
+                rabbitId?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -482,22 +482,22 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _meta: object;
             _ctx_out: object;
             _input_in: {
+                description?: string;
                 breedDate?: string;
+                damWeight?: string;
                 expectedKindleDate?: string;
                 nestBoxDate?: string;
                 kindleDate?: string;
                 weanDate?: string;
-                damWeight?: string;
-                description?: string;
             };
             _input_out: {
+                description?: string;
                 breedDate?: string;
+                damWeight?: string;
                 expectedKindleDate?: string;
                 nestBoxDate?: string;
                 kindleDate?: string;
                 weanDate?: string;
-                damWeight?: string;
-                description?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -563,21 +563,21 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _ctx_out: object;
             _input_in: {
                 id?: string;
+                description?: string;
                 breedDate?: Date;
                 expectedKindleDate?: Date;
                 nestBoxDate?: Date;
                 kindleDate?: Date;
                 weanDate?: Date;
-                description?: string;
             };
             _input_out: {
                 id?: string;
+                description?: string;
                 breedDate?: Date;
                 expectedKindleDate?: Date;
                 nestBoxDate?: Date;
                 kindleDate?: Date;
                 weanDate?: Date;
-                description?: string;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;
@@ -619,12 +619,12 @@ export declare const appRouter: import("@trpc/server").CreateRouterInner<import(
             _meta: object;
             _ctx_out: object;
             _input_in: {
-                interval?: number;
                 rabbitId?: string;
+                interval?: number;
             };
             _input_out: {
-                interval?: number;
                 rabbitId?: string;
+                interval?: number;
             };
             _output_in: typeof import("@trpc/server").unsetMarker;
             _output_out: typeof import("@trpc/server").unsetMarker;

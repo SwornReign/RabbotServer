@@ -27,37 +27,37 @@ export declare const _RabbitModel: z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     id?: string;
     name?: string;
-    weight?: string;
     description?: string;
     status?: string;
-    cageId?: string;
+    weight?: string;
     gender?: "Sire" | "Dam";
+    breedTypeId?: string;
     birthDate?: Date;
     deceaseDate?: Date;
     lastBreedDate?: Date;
     breedGeo?: Json;
-    statusDate?: Date;
-    breedTypeId?: string;
+    cageId?: string;
     motherId?: string;
     fatherId?: string;
     kittenCageId?: string;
+    statusDate?: Date;
 }, {
     id?: string;
     name?: string;
-    weight?: string;
     description?: string;
     status?: string;
-    cageId?: string;
+    weight?: string;
     gender?: "Sire" | "Dam";
+    breedTypeId?: string;
     birthDate?: Date;
     deceaseDate?: Date;
     lastBreedDate?: Date;
     breedGeo?: Json;
-    statusDate?: Date;
-    breedTypeId?: string;
+    cageId?: string;
     motherId?: string;
     fatherId?: string;
     kittenCageId?: string;
+    statusDate?: Date;
 }>;
 export interface CompleteRabbit extends z.infer<typeof _RabbitModel> {
     Cage?: CompleteCage | null;

@@ -16,11 +16,7 @@ exports.gpioRouter = (0, __1.router)({
         try {
             await (0, funtions_1.runMotor)();
             await app_1.prisma[model].updateMany({
-                where: {
-                    NOT: {
-                        createdAt: new Date('1/1/2000'),
-                    },
-                },
+                where: {},
                 data: {
                     lastFeedDate: new Date(),
                 },
@@ -45,11 +41,7 @@ exports.gpioRouter = (0, __1.router)({
         try {
             await (0, funtions_1.runWater)(interval);
             await app_1.prisma[model].updateMany({
-                where: {
-                    NOT: {
-                        createdAt: new Date('1/1/2000'),
-                    },
-                },
+                where: {},
                 data: {
                     lastWaterDate: new Date(),
                 },

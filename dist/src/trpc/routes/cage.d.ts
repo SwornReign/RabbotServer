@@ -134,12 +134,12 @@ export declare const cageRouter: import("@trpc/server").CreateRouterInner<import
         _meta: object;
         _ctx_out: object;
         _input_in: {
-            rabbitId?: string;
             cageId?: string;
+            rabbitId?: string;
         };
         _input_out: {
-            rabbitId?: string;
             cageId?: string;
+            rabbitId?: string;
         };
         _output_in: typeof import("@trpc/server").unsetMarker;
         _output_out: typeof import("@trpc/server").unsetMarker;
