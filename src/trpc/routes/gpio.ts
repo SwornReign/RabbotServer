@@ -6,45 +6,60 @@ import dayjs from 'dayjs';
 import { runMotor, runWater, runWeight } from '../../GPIO/funtions';
 import cron from 'node-cron';
 
-const model: Models = 'breedRecord';
+const model: Models = 'logs';
 
 export const gpioRouter = router({
-  feed: publicProcedure.mutation(async () => {
-    console.log('GPIO Feed');
-    try {
-      await runMotor();
+  feed: publicProcedure
+    .input(
+      z.object({
+        cageId: z.string().uuid(),
+      }),
+    )
+    .mutation(async ({ input: { cageId } }) => {
+      console.log('GPIO Feed');
+      try {
+        await runMotor();
 
-      await prisma[model].updateMany({
-        where: {},
-        data: {
-          lastFeedDate: new Date(),
-        },
-      });
+        await prisma[model].create({
+          data: {
+            type: 'Feed',
+            Cage: {
+              connect: {
+                id: cageId,
+              },
+            },
+          },
+        });
 
-      return {
-        ok: true,
-      };
-    } catch (error) {
-      return {
-        ok: false,
-      };
-    }
-  }),
+        return {
+          ok: true,
+        };
+      } catch (error) {
+        return {
+          ok: false,
+        };
+      }
+    }),
   water: publicProcedure
     .input(
       z.object({
         interval: z.number().optional().default(2000),
+        cageId: z.string().uuid(),
       }),
     )
-    .mutation(async ({ input: { interval } }) => {
+    .mutation(async ({ input: { interval, cageId } }) => {
       console.log('GPIO Water');
       try {
         await runWater(interval);
 
-        await prisma[model].updateMany({
-          where: {},
+        await prisma[model].create({
           data: {
-            lastWaterDate: new Date(),
+            type: 'Water',
+            Cage: {
+              connect: {
+                id: cageId,
+              },
+            },
           },
         });
 

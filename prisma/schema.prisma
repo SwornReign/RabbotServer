@@ -21,6 +21,20 @@ enum CageType {
     Pen
 }
 
+enum logType {
+    Feed
+    Water
+}
+
+model Logs {
+    id        String   @id @default(uuid()) @map("_id")
+    type      logType
+    cageId    String
+    Cage      Cage     @relation(fields: [cageId], references: [id])
+    createdAt DateTime @default(now())
+    updateAt  DateTime @updatedAt
+}
+
 model Cage {
     id          String  @id @default(uuid()) @map("_id")
     name        String  @unique
@@ -44,6 +58,7 @@ model Cage {
 
     Rabbit Rabbit[] @relation("Dam")
     Kitten Rabbit[] @relation("Kitten")
+    Logs   Logs[]
 }
 
 enum RabbitGender {
